@@ -16,7 +16,6 @@
 }
 #ctr-line-sub {
 	text-align: center;
-	line-height: 0.1;
 }
 #menu {
 	text-indent: 2em;
@@ -63,22 +62,23 @@ img {
 tw-sidebar {
 	visibility: hidden;
 }
-</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Title Page" tags="" position="100,600" size="100,100">&lt;div id=&quot;ctr-line&quot;&gt;&lt;b&gt;Watch Closely (November Font)&lt;/b&gt;&lt;/div&gt;
-&lt;div id=&quot;ctr-line-sub&quot;&gt;An Interractive Narrative Project&lt;/div&gt;
-Created by Katie Carlson, Tamjid Hossain, and Elizabeth Sobel
+</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Title Page" tags="" position="100,600" size="100,100">&lt;img src=&quot;images/Title.png&quot; alt=&quot;Intro Image&quot;&gt;
+&lt;div id=&quot;ctr-line&quot;&gt;An Interractive Narrative Project&lt;/div&gt;
+&lt;div id=&quot;ctr-line-sub&quot;&gt;Created by Katie Carlson, Tamjid Hossain, and Elizabeth Sobel&lt;/div&gt;
 
 How to use Twine:
 
 For each prompt, select the choice that you would like to go along with by clicking on it. Each of the choices that you make will affect the way the story plays out so choose carefully.
 
 Trigger Warning:
-•	Extreme Stalking
-•	Abusive Relationship(s)
+&amp;nbsp&amp;nbsp&amp;nbsp•	Extreme Stalking
+&amp;nbsp&amp;nbsp&amp;nbsp•	Abusive Relationship(s)
 
-LMC 4720: Interactive Narrative Spring 2021
-Dr. Wilson
+&lt;i&gt;LMC 4720: Interactive Narrative Spring 2021 with Dr. Wilson&lt;/i&gt;
 
-[[Start-&gt;Introduction]]
+
+
+[[Begin Story-&gt;Introduction]]
 (set: $stalker to 0)</tw-passagedata><tw-passagedata pid="2" name="Introduction" tags="" position="225,600" size="100,100">It’s a fine morning. 1984. Against All Odds hums in your ears through your headphones as you sit outside, just enjoying the ambiance of PSU campus. It’s the weekend, which means the campus is alive with students enjoying their small break from classes. You are once such student, just enjoying your time in the sweet outdoors. 
 
 &lt;img src=&quot;images/intro.png&quot; alt=&quot;Intro Image&quot;&gt;
@@ -95,9 +95,14 @@ She makes a left into the campus’s popular coffee shop. Suddenly, you think ma
 var audio = document.createElement(&#39;audio&#39;);
 audio.src = &#39;sfx/PeacefulNatureAmbience.wav&#39;;
 audio.loop = true;
+audio.volume = 1;
 audio.play();
 
+var moreStorm = document.createElement(&#39;audio&#39;);
+
 var music = document.createElement(&#39;audio&#39;);
+
+var transition = document.createElement(&#39;audio&#39;);
 
 &lt;/script&gt;</tw-passagedata><tw-passagedata pid="3" name="Reference 2" tags="" position="700,100" size="100,100">&lt;script&gt;
 audio.pause();
@@ -134,12 +139,42 @@ You watch as she takes her drink and sits close to the entrance of the establish
 
 Once you get to the front of the line you realize you haven&#39;t even glaced at the menu yet.
 
-(set: $drink to &#39;&#39;)
-&lt;div id=&quot;menu&quot;&gt;  $3.95 (link: &quot;Caramel Iced Americano&quot;)[(set: $drink to it + &#39;Caramel Iced Americano&#39;)Caramel Iced Americano]&lt;/div&gt;
-&lt;div id=&quot;menu&quot;&gt;  $3.95 Mocha Latte Frappucino Machiato&lt;/div&gt;
-&lt;div id=&quot;menu&quot;&gt;  $3.95 Super Boring Black Coffee&lt;/div&gt;
-&lt;div id=&quot;menu&quot;&gt;  $3.95 Sparkly Pink Strawberry Iced Tea&lt;/div&gt;
-$drink
+
+
+{(set: $choice to 4)
+(set: $choices to (array: &quot;
+&lt;div id=&#39;menu&#39;&gt;$4.45 Classic Latte&lt;/div&gt;&quot;, &quot;
+&lt;div id=&#39;menu&#39;&gt;$4.85 Dark Chocolate Mocha&lt;/div&gt;&quot;, &quot;
+&lt;div id=&#39;menu&#39;&gt;$3.30 Cappuccino&lt;/div&gt;&quot;, &quot;
+&lt;div id=&#39;menu&#39;&gt;$3.45 Shot in the Dark&lt;/div&gt;&quot;))
+&lt;div id=&quot;menu&quot;&gt;Menu&lt;/div&gt;
+{(set: $bodyLink to &quot;|body&gt;[
+	(link: $choices&#39;s 1st)[
+		(set: $choice to 1)
+		(set: $clothes to &#39;It tastes delicious, like it always does.&#39;)
+        (replace: ?body)[$bodyLink]
+	] (link: $choices&#39;s 2st)[
+		(set: $choice to 2)
+		(set: $clothes to &#39;The dark chocolate is very bitter.&#39;)
+        (replace: ?body)[$bodyLink]
+	] (link: $choices&#39;s 3st)[
+		(set: $choice to 3)
+		(set: $clothes to &#39;The drink has a thick layer of foam on top, but underneath it is rich creamy flavor.&#39;)
+        (replace: ?body)[$bodyLink]
+	] (link: $choices&#39;s 4st)[
+		(set: $choice to 4)
+		(set: $clothes to &#39;You have no idea if this is even coffee.&#39;)
+        (replace: ?body)[$bodyLink]	]
+]&quot;)
+$bodyLink
+}
+
+(set: $clothes to &#39;The drink you order is the same as the last time you came to this coffee shop.&#39;)
+(live: 20ms)[
+	(if: $choice &gt; 0)[
+		$clothes
+	]
+]} (link: &quot;You cautiously take a sip of your hot drink.&quot;)[(link: &quot;You take another sip.&quot;)[(link: &quot;You continue to drink your steaming hot drink.&quot;)[(link: &quot;Perhaps just one more sip...&quot;)[You have burnt your tongue.]]]]
 
 Afterwards, you&#39;ve met with a dilemma. You could [[go back outside and enjoy the drink at the bench you were at before-&gt;Leave With Drink]], or you could [[find a place to sit within the small coffee shop.-&gt;Watch In Shop]]
 
@@ -147,11 +182,12 @@ Afterwards, you&#39;ve met with a dilemma. You could [[go back outside and enjoy
 audio.pause();
 audio.src = &#39;sfx/CoffeeShop.wav&#39;;
 audio.play();
+audio.volume = 0.2;
 audio.loop = true;
 
 music.src = &#39;music/Jazz.mp3&#39;;
 music.loop = true;
-music.volume = 0.1
+music.volume = 0.08
 music.play();
 &lt;/script&gt;</tw-passagedata><tw-passagedata pid="6" name="Leave With Drink" tags="" position="500,525" size="100,100">With a drink in hand, you head back to your bench, settling back into the seat. You put back on your headphones and tune into your favorite station, and take a sip from the familiar drink. 
 
@@ -163,6 +199,7 @@ After a while, you see the girl of your dreams leave the coffee shop she went in
 audio.pause();
 audio.src = &#39;sfx/PeacefulNatureAmbience.wav&#39;;
 audio.play();
+audio.volume = 1;
 audio.loop = true;
 
 music.pause();
@@ -180,6 +217,7 @@ She’s going quick, and to keep up you have to be quick too. Without her notici
 audio.pause();
 audio.src = &#39;sfx/PeacefulNatureAmbience.wav&#39;;
 audio.play();
+audio.volume = 1;
 audio.loop = true;
 
 music.pause();
@@ -202,7 +240,7 @@ Right, just asking if she’s okay. You’ve spoken with her before after all, s
 You promptly turn around. [[Maybe not yet.-&gt;Park]]]</tw-passagedata><tw-passagedata pid="12" name="Flowers" tags="" position="900,600" size="100,100">(set: $stalker to $stalker + 1)
 Some flowers would be nice. She’s always wearing that jean jacket with the rose patches on it, so you decide to buy a bouquet for her. 
 
-You go up to the booth with the flowers and quickly purchase a small bundle. As you turn back around to see her, you notice someone else approaching. A friend, who greets her with a hug. They talk briefly, and you hear them mention getting lunch together. 
+You go up to the booth with the flowers and quickly purchase a small bundle. As you turn back around to see her, you notice someone else approaching. A friend, who greets her with a hug. They talk briefly, laugh at something, and you hear them mention getting lunch together. 
 
 Well, lunch does sound nice, you should [[get some lunch yourself.-&gt;Lunch]]
 
@@ -259,7 +297,17 @@ Something a few towns over would be nice. Something far enough away from this pl
 
 Leaving would give some much needed closure. For both you… and her.
 
-[[The End]]</tw-passagedata><tw-passagedata pid="20" name="Peek" tags="" position="1425,600" size="100,100">Just a quick peek. It’s too late for regrets anyways. Cracking open the planner, you almost slap yourself once you realize the obvious from her writing. Of course she’d be back at her dorms by now. She’s on a meal plan to eat dinners there, and she always goes back early on Saturdays to call her mother.
+[[The End]]
+
+&lt;script&gt;
+audio.volume = 0.5;
+
+moreStorm.pause();
+moreStorm.src = &#39;sfx/PeacefulNatureAmbience.wav&#39;;
+moreStorm.play();
+moreStorm.volume = 0.8;
+moreStorm.loop = true;
+&lt;/script&gt;</tw-passagedata><tw-passagedata pid="20" name="Peek" tags="" position="1425,600" size="100,100">Just a quick peek. It’s too late for regrets anyways. Cracking open the planner, you almost slap yourself once you realize the obvious from her writing. Of course she’d be back at her dorms by now. She’s on a meal plan to eat dinners there, and she always goes back early on Saturdays to call her mother.
 
 Destination in mind, there’s only one thing left to do. [[Visit her.-&gt;Visit]] </tw-passagedata><tw-passagedata pid="21" name="Knock" tags="" position="1700,450" size="100,100">THUD THUD THUD. 
 
@@ -278,10 +326,13 @@ Heart sinking, you slowly raise your hands into the air to show compliance, look
 [[The End]]
 
 &lt;script&gt;
-audio.pause();
-audio.src = &#39;sfx/ViolentStorm.wav&#39;;
-audio.play();
-audio.loop = false;
+moreStorm.pause();
+moreStorm.src = &#39;sfx/ViolentStorm.wav&#39;;
+moreStorm.play();
+moreStorm.volume = 0.3;
+moreStorm.loop = true;
+
+audio.volume = 0.7;
 &lt;/script&gt;</tw-passagedata><tw-passagedata pid="22" name="Leave Flowers and Go" tags="" position="1700,600" size="100,100">You place the flowers at her doorstep. They look good there. 
 
 You then glance up at the sky, finished admiring your gift to her. It’s time to leave, you decide, heading home, mission accomplished. And if there’s an article in the paper the next morning, warning the community of suspicious activity by the woman’s dorms, you just crumple up the paper and pretend not to see it. 
@@ -289,10 +340,12 @@ You then glance up at the sky, finished admiring your gift to her. It’s time t
 [[The End]]
 
 &lt;script&gt;
-audio.pause();
-audio.src = &#39;sfx/DistantStorm.wav&#39;;
-audio.play();
-audio.loop = true;
+moreStorm.pause();
+moreStorm.src = &#39;sfx/DistantStorm.wav&#39;;
+moreStorm.play();
+moreStorm.loop = true;
+
+audio.volume = 0.7;
 &lt;/script&gt;</tw-passagedata><tw-passagedata pid="23" name="Leave Flowers but Stay" tags="" position="1700,750" size="100,100">You stare at the roses, and imagine yourself giving them to her. Her laughing, that infectious smile on her face as she receives the flower she holds so dear. You’re caught up in the moment, imagining what could have been. You wonder if she’s watching you from the door’s peephole, if she sees you outside her door, waiting. The storm whips around you, cloudy skies breaking out into a full downpour, but you don’t notice, too distracted. You don’t notice anything at all, until a steady voice calls out from behind you.
 
 “Step away from the door sir.” you hear, and as you turn you’re suddenly brought back into the moment. Red and Blue lights from a police car parked at the side of the road illuminate the two blue outfitted men staring you down. You look at them for a second before the realization hits you. She had called them here.
@@ -305,30 +358,37 @@ Heart sinking, you slowly raise your hands into the air to show compliance, look
 audio.pause();
 audio.src = &#39;sfx/LightRain.mp3&#39;;
 audio.play();
+audio.volume = 0.4;
 audio.loop = true;
 &lt;/script&gt;</tw-passagedata><tw-passagedata pid="24" name="The End" tags="" position="2000,600" size="100,100">We hope you enjoyed this game! We want to raise awareness about stalking and being a victim of an abusive relationships as these are serious issues that many women and men face on a daily basis.
 
 Some signs of stalking include but are not limited to: 
-•	Unwanted Phone calls
-•	Signs someone is near your home, car, workplace, etc.
-•	Receiving repeated letters, gifts, social media posts, etc. 
-•	Tried to get information about you from a third person
+&amp;nbsp&amp;nbsp&amp;nbsp•	Unwanted Phone calls
+&amp;nbsp&amp;nbsp&amp;nbsp•	Signs someone is near your home, car, workplace, etc.
+&amp;nbsp&amp;nbsp&amp;nbsp•	Receiving repeated letters, gifts, social media posts, etc. 
+&amp;nbsp&amp;nbsp&amp;nbsp•	Tried to get information about you from a third person
 
 Victims of abusive relationships may:
-•	Have poor self-concept (individual perception of one’s behavior)
-•	Feel isolated and like they lack a strong support system
-•	Get depression
-•	Feel financially dependent (which makes it more difficult to get out of these situations)
+&amp;nbsp&amp;nbsp&amp;nbsp•	Have poor self-concept (individual perception of one’s behavior)
+&amp;nbsp&amp;nbsp&amp;nbsp•	Feel isolated and like they lack a strong support system
+&amp;nbsp&amp;nbsp&amp;nbsp•	Get depression
+&amp;nbsp&amp;nbsp&amp;nbsp•	Feel financially dependent (which makes it more difficult to get out of these situations)
 
 Abuse happens because it is kept secret and abusers know that they have to keep their victims isolated. This is why we encourage you to keep close tabs on loved ones as it is incredibly difficult to admit to being a victim of an abusive relationship.
 
 If you are experiencing either of these or know someone who is, here are some hotlines to call:
-•	National Center for Victims of Crime: 1-855-484-2846
-•	Office on Women’s Health: 1-800-994-9662
-•	National Domestic Violence Hotline: 1−800−799−7233
-•	The National Sexual Assault Hotline: 1-800-656-4673
+&amp;nbsp&amp;nbsp&amp;nbsp•	National Center for Victims of Crime: 1-855-484-2846
+&amp;nbsp&amp;nbsp&amp;nbsp•	Office on Women’s Health: 1-800-994-9662
+&amp;nbsp&amp;nbsp&amp;nbsp•	National Domestic Violence Hotline: 1−800−799−7233
+&amp;nbsp&amp;nbsp&amp;nbsp•	The National Sexual Assault Hotline: 1-800-656-4673
 
-[[Back to Start-&gt;Title Page]]</tw-passagedata><tw-passagedata pid="25" name="Watch In Shop" tags="" position="500,400" size="100,100">(set: $stalker to $stalker + 1)
+[[Back to Title Page-&gt;Title Page]]
+
+&lt;script&gt;
+audio.pause();
+moreStorm.pause();
+music.pause();
+&lt;/script&gt;</tw-passagedata><tw-passagedata pid="25" name="Watch In Shop" tags="" position="500,400" size="100,100">(set: $stalker to $stalker + 1)
 &lt;img src=&quot;images/watchinshop.png&quot; alt=&quot;Watch In Shop Image&quot;&gt;
 
 You get your drink and find a seat further into the shop, at a blindspot to most of the other patrons. From there, you take the time to simply watch the girl of your dreams as she immersed herself in her book. It must be a good one, because she’s hooked, emotions clear on her face as she goes through it, ranging from content to scared to sad. 
