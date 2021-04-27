@@ -17,6 +17,9 @@
 #ctr-line-sub {
 	text-align: center;
 }
+#small {
+ 	font-size: 70%; 
+}
 #menu {
 	text-indent: 2em;
 	font-family: 'Courier New', monospace;
@@ -76,10 +79,9 @@ Trigger Warning:
 
 &lt;i&gt;LMC 4720: Interactive Narrative Spring 2021 with Dr. Wilson&lt;/i&gt;
 
-
-
 [[Begin Story-&gt;Introduction]]
-(set: $stalker to 0)</tw-passagedata><tw-passagedata pid="2" name="Introduction" tags="" position="225,600" size="100,100">It’s a fine morning. 1984. Against All Odds hums in your ears through your headphones as you sit outside, just enjoying the ambiance of PSU campus. It’s the weekend, which means the campus is alive with students enjoying their small break from classes. You are once such student, just enjoying your time in the sweet outdoors. 
+(set: $stalker to 0)
+(set: $flowers to 0)</tw-passagedata><tw-passagedata pid="2" name="Introduction" tags="" position="225,600" size="100,100">It’s a fine morning. 1984. Against All Odds hums in your ears through your headphones as you sit outside, just enjoying the ambiance of PSU campus. It’s the weekend, which means the campus is alive with students enjoying their small break from classes. You are once such student, just enjoying your time in the sweet outdoors. 
 
 &lt;img src=&quot;images/intro.png&quot; alt=&quot;Intro Image&quot;&gt;
 
@@ -150,18 +152,42 @@ Once you get to the front of the line you realize you haven&#39;t even glaced at
 &lt;div id=&quot;menu&quot;&gt;Menu&lt;/div&gt;
 {(set: $bodyLink to &quot;|body&gt;[
 	(link: $choices&#39;s 1st)[
+	&lt;script&gt;
+transition.src = &#39;sfx/Register.mp3&#39;;
+transition.loop = false;
+transition.volume = 1;
+transition.play();
+&lt;/script&gt;
 		(set: $choice to 1)
 		(set: $clothes to &#39;It tastes delicious, like it always does.&#39;)
         (replace: ?body)[$bodyLink]
 	] (link: $choices&#39;s 2st)[
+	&lt;script&gt;
+transition.src = &#39;sfx/Register.mp3&#39;;
+transition.loop = false;
+transition.volume = 1;
+transition.play();
+&lt;/script&gt;
 		(set: $choice to 2)
 		(set: $clothes to &#39;The dark chocolate is very bitter.&#39;)
         (replace: ?body)[$bodyLink]
 	] (link: $choices&#39;s 3st)[
+	&lt;script&gt;
+transition.src = &#39;sfx/Register.mp3&#39;;
+transition.loop = false;
+transition.volume = 1;
+transition.play();
+&lt;/script&gt;
 		(set: $choice to 3)
 		(set: $clothes to &#39;The drink has a thick layer of foam on top, but underneath it is rich creamy flavor.&#39;)
         (replace: ?body)[$bodyLink]
 	] (link: $choices&#39;s 4st)[
+	&lt;script&gt;
+transition.src = &#39;sfx/Register.mp3&#39;;
+transition.loop = false;
+transition.volume = 1;
+transition.play();
+&lt;/script&gt;
 		(set: $choice to 4)
 		(set: $clothes to &#39;You have no idea if this is even coffee.&#39;)
         (replace: ?body)[$bodyLink]	]
@@ -189,6 +215,11 @@ music.src = &#39;music/Jazz.mp3&#39;;
 music.loop = true;
 music.volume = 0.08
 music.play();
+
+transition.src = &#39;sfx/bell.wav&#39;;
+transition.loop = false;
+transition.volume = 0.5;
+transition.play();
 &lt;/script&gt;</tw-passagedata><tw-passagedata pid="6" name="Leave With Drink" tags="" position="500,525" size="100,100">With a drink in hand, you head back to your bench, settling back into the seat. You put back on your headphones and tune into your favorite station, and take a sip from the familiar drink. 
 
 &lt;img src=&quot;images/leavewithdrink.png&quot; alt=&quot;Leave With Drink Image&quot;&gt;
@@ -204,6 +235,11 @@ audio.loop = true;
 
 music.pause();
 
+transition.src = &#39;sfx/bell.wav&#39;;
+transition.loop = false;
+transition.volume = 0.5;
+transition.play();
+
 &lt;/script&gt;</tw-passagedata><tw-passagedata pid="7" name="Stay Outside" tags="" position="350,675" size="100,100">Well, it’s not like you needed the coffee anyways.
 
 &lt;img src=&quot;images/stayout.png&quot; alt=&quot;Stay Outside Image&quot;&gt;
@@ -211,7 +247,11 @@ music.pause();
 The radio commentator starts to cue up the next song &quot;...and up next we have  (link: &quot;&#39;Girls Just Want to Have Fun&#39; by Cyndi Lauper.\&quot;&quot;)[(link: &quot;another Michael Jackson hit.\&quot;&quot;)[a 30-minute interview with a historian nobody has ever heard of.&quot;]]
 
 After a while, you see the girl of your dreams leave the coffee shop she went into a good while ago. You had almost forgotten she was there while relaxing, but she hurries off. Perhaps she lost track of time as you did and is running late for something? You’re tempted to [[follow along-&gt;Follow]], curious by her sudden urgency. Then again, it really is none of your business… maybe you should just [[leave her be...-&gt;Leave Her Be]]</tw-passagedata><tw-passagedata pid="8" name="Follow" tags="" position="650,525" size="100,100">(set: $stalker to $stalker + 1)
-She’s going quick, and to keep up you have to be quick too. Without her noticing of course- you don’t want to get in her way. Eventually she rounds the corner and arrives at a large stretch of greenery-[[the campus park.-&gt;Park]] 
+She’s going quick, and to keep up you have to be quick too. Without her noticing of course- you don’t want to get in her way. 
+
+&lt;img src=&quot;images/Follow.png&quot; alt=&quot;Following Image&quot;&gt;
+
+Eventually she rounds the corner and arrives at a large stretch of greenery-[[the campus park.-&gt;Park]] 
 
 &lt;script&gt;
 audio.pause();
@@ -222,55 +262,177 @@ audio.loop = true;
 
 music.pause();
 
+transition.src = &#39;sfx/Footsteps.wav&#39;;
+transition.loop = false;
+transition.volume = 0.3;
+transition.play();
+
 &lt;/script&gt;</tw-passagedata><tw-passagedata pid="9" name="Leave Her Be" tags="" position="875,925" size="100,100">Well, it’s a lovely day. It’d be a waste to spend it following after her. Instead, you decide to spend some time on yourself. There’s a lot of stuff to do over the weekend after all. 
+
+&lt;img src=&quot;images/LeaveBe.png&quot; alt=&quot;Leaving Her Be Image&quot;&gt;
 
 You remember some classmates talking about that new movie Footloose a few weeks back. Maybe you should [[go and watch that flick to pass the time?-&gt;Movie]] Oh! Or you can go and [[grab your groceries for the week.-&gt;Groceries]] You remember you’ve been running low on food for a while now, and if your mom saw the state your fridge was in you’re sure she’d throw a fit.</tw-passagedata><tw-passagedata pid="10" name="Park" tags="" position="775,525" size="100,100">From the entrance of the park she walks to the central portion, a small stone plaza surrounded by trees and entrances to different walking paths. The plaza holds a couple of benches and a few stands that sell different foods and other things like paintings and flowers. 
 
-She looks up to a clock standing in the central part of the plaza, and seems to relax after looking at the time. You follow her gaze and notice it hasn’t even been 10 minutes since she left the shop. Whatever reason she needed to be at the park, it looks like she arrived on time. 
+She looks up to a clock standing in the central part of the plaza, and seems to relax after looking at the time. You follow her gaze and notice it hasn’t even been 10 minutes since she left the shop. 
+
+&lt;img src=&quot;images/Park.png&quot; alt=&quot;Park Image&quot;&gt;
+
+Whatever reason she needed to be at the park, it looks like she arrived on time. 
 
 Maybe you should [[approach her to ask if she’s okay-&gt;Approach]], just in case you assumed wrong? 
 
 Or maybe you should man up and [[buy her some flowers(+1)-&gt;Flowers]]? 
 
-Or… maybe you should just [[leave her alone-&gt;Leave Her Be]]. It’s not like she doesn’t know how to ask for help if she needs it.</tw-passagedata><tw-passagedata pid="11" name="Approach" tags="" position="900,350" size="100,100">(set: $stalker to $stalker + 1)
+Or… maybe you should just [[leave her alone-&gt;Leave Her Be]]. It’s not like she doesn’t know how to ask for help if she needs it.
+
+&lt;script&gt;
+transition.src = &#39;sfx/BushRustle.wav&#39;;
+transition.loop = false;
+transition.volume = 0.3;
+transition.play();
+&lt;/script&gt;</tw-passagedata><tw-passagedata pid="11" name="Approach" tags="" position="900,350" size="100,100">(set: $stalker to $stalker + 1)
 Right, just asking if she’s okay. You’ve spoken with her before after all, she’ll probably be grateful to have someone watching her back. 
 
-(link: &quot;You muster up the courage to talk to her and-&quot;)[You muster up the courage to talk to her and-
+(link: &quot;&lt;img src=\&#39;images/Approach.png\&#39; alt=\&#39;Approaching Image\&#39;&gt;
+You muster up the courage to talk to her and-&quot;)[&lt;img src=&quot;images/Approach2.png&quot; alt=&quot;Approaching Image&quot;&gt;
+You muster up the courage to talk to her and-
 
 You promptly turn around. [[Maybe not yet.-&gt;Park]]]</tw-passagedata><tw-passagedata pid="12" name="Flowers" tags="" position="900,600" size="100,100">(set: $stalker to $stalker + 1)
+(set: $flowers to 1)
 Some flowers would be nice. She’s always wearing that jean jacket with the rose patches on it, so you decide to buy a bouquet for her. 
 
-You go up to the booth with the flowers and quickly purchase a small bundle. As you turn back around to see her, you notice someone else approaching. A friend, who greets her with a hug. They talk briefly, laugh at something, and you hear them mention getting lunch together. 
+You go up to the booth with the flowers and quickly purchase a small bundle. 
+
+&lt;img src=&quot;images/Flowers.png&quot; alt=&quot;Flowers Image&quot;&gt;
+
+As you turn back around to see her, you notice someone else approaching. A friend, who greets her with a hug. They talk briefly, laugh at something, and you hear them mention getting lunch together. 
 
 Well, lunch does sound nice, you should [[get some lunch yourself.-&gt;Lunch]]
 
 But then again, you don’t think you’ve seen this friend of hers before. Maybe you should [[follow along-&gt;Follow 2]], just to make sure she’s not getting scammed or something.</tw-passagedata><tw-passagedata pid="13" name="Home" tags="" position="1300,600" size="100,100">You head home, and by the time you make it to your apartment, it’s growing late into the afternoon. You settle down for a bit, just pacing around as you think, and then you remember something. Going to your desk, you pull out from the top drawer a daily planner. It’s pink, and sparkly, and labeled with her name. 
 
-She left it here last time she was over. You haven’t had the chance to give it back. There’s a good chance she’s put in where she went, and you could finally approach her. You just need to [[take a quick peek-&gt;Peek]].
+&lt;img src=&quot;images/Planner.png&quot; alt=&quot;Planner Image&quot;&gt;
 
-(if: $stalker is &lt; 4)[Only accessible if you don&#39;t have four or more stalker options
-Or you could… throw it away. Like you should have done weeks ago when she broke up with you. [[Move on with your life and forget her.-&gt;Good End]]]
+She left it here last time she was over. You haven’t had the chance to give it back. If you knew where she was, you could drop it off for her, save her the trouble.  Her friends would be jealous of the sweet gesture, the way that you care about her persistently.
+
+(link: &quot;Page her.&quot;)[Page her.&lt;script&gt;
+transition.src = &#39;sfx/SendingPager.wav&#39;;
+transition.loop = false;
+transition.volume = 0.4;
+transition.play();&lt;/script&gt;
+
+(link: &quot;Page her again.&quot;)[Page her again.&lt;script&gt;
+transition.src = &#39;sfx/SendingPager.wav&#39;;
+transition.loop = false;
+transition.volume = 0.4;
+transition.play();&lt;/script&gt;
+
+(link: &quot;Page her again.&quot;)[Page her again.&lt;script&gt;
+transition.src = &#39;sfx/SendingPager.wav&#39;;
+transition.loop = false;
+transition.volume = 0.4;
+transition.play();&lt;/script&gt;
+
+(link: &quot;Page her again.&quot;)[Page her again.&lt;script&gt;
+transition.src = &#39;sfx/SendingPager.wav&#39;;
+transition.loop = false;
+transition.volume = 0.4;
+transition.play();&lt;/script&gt;
+
+&lt;img src=&quot;images/Pager.png&quot; alt=&quot;Pager Image&quot;&gt;
+
+Maybe you don&#39;t need her to answer.  You look back and her cute planner, realizing that you can [[take a quick peek inside-&gt;Peek]] and find out exactly what is on her schedule for today...
+
+(if: $stalker is &lt; 4)[You could also throw it away, like you should have done weeks ago when she broke up with you. [[Move on with your life and forget her.-&gt;Good End]]]
+
+(link: &quot;Or you could page her one more time.&quot;)[Or you could page her one more time.&lt;script&gt;
+transition.src = &#39;sfx/SendingPager.wav&#39;;
+transition.loop = false;
+transition.volume = 0.4;
+transition.play();&lt;/script&gt;
+
+She must answer you at some point. (link: &quot;Page her.&quot;)[Page her.&lt;script&gt;
+transition.src = &#39;sfx/PhoneRinging.wav&#39;;
+transition.loop = false;
+transition.volume = 1;
+transition.play();&lt;/script&gt;
+
+Suddenly the phone rings.  She finally saw your message and wants to talk to you!  This is your moment--words spring into your head, your handls fumble to pick up the receiver.
+
+You press the phone to your ear and are about to say her name when-
+
+It&#39;s not her on the line.  Just a man&#39;s voice, deep and confused.  You don&#39;t even listen to what he has to say, you slam the phone back down.  Why won&#39;t she call you back?  You&#39;ve paged her so many times at this point.
+
+(link: &quot;Page her.&quot;)[Page her.&lt;script&gt;
+transition.src = &#39;sfx/SendingPager.wav&#39;;
+transition.loop = false;
+transition.volume = 0.4;
+transition.play();&lt;/script&gt;
+
+(link: &quot;Page her.&quot;)[Page her.&lt;script&gt;
+transition.src = &#39;sfx/SendingPager.wav&#39;;
+transition.loop = false;
+transition.volume = 0.4;
+transition.play();&lt;/script&gt;
+
+The phone sits silently on the table.  The pager sits uselessly in your hand.]]]]
+]
+]
+]
+]
 
 &lt;script&gt;
 audio.pause();
 audio.src = &#39;sfx/LightRain.mp3&#39;;
 audio.play();
 audio.loop = true;
-&lt;/script&gt;
-</tw-passagedata><tw-passagedata pid="14" name="Lunch" tags="" position="1025,675" size="100,100">Well, she seems to have things under control. Nodding, you leave the park and go to get lunch yourself. There are plenty of good places open on the weekend, but you decide to grab pizza. It’s cheap and tastes good, so what’s not to like? And it’s crowded enough that no one notices the bundle of roses you still have on hand. 
+
+transition.src = &#39;sfx/FrontDoorKeys.mp3&#39;;
+transition.loop = false;
+transition.volume = 0.4;
+transition.play();
+
+&lt;/script&gt;</tw-passagedata><tw-passagedata pid="14" name="Lunch" tags="" position="1025,675" size="100,100">Well, she seems to have things under control. Nodding, you leave the park and go to get lunch yourself. There are plenty of good places open on the weekend, but you decide to grab pizza. It’s cheap and tastes good, so what’s not to like? 
+
+&lt;img src=&quot;images/Lunch.png&quot; alt=&quot;Lunch Image&quot;&gt;
+
+(if $flowers is &gt; 0)[And it’s crowded enough that no one notices the bundle of roses you still have on hand.]
 
 Once you’ve eaten your fill you realize you’ve been out for several hours already. In that case, it’s time to [[head home.-&gt;Home]]</tw-passagedata><tw-passagedata pid="15" name="Follow 2" tags="" position="1025,525" size="100,100">(set: $stalker to $stalker + 1)
-Well, it doesn&#39;t hurt to be careful. She’s too pretty to be scammed by some nobody. You follow along, careful not to be spotted so you don’t scare her or her ‘friend’ off. They get lunch at a nicer restaurant, and begin talking about a group project. 
+Well, it doesn&#39;t hurt to be careful. She’s too pretty to be scammed by some nobody. You follow along, careful not to be spotted so you don’t scare her or her ‘friend’ off. 
 
-Just a group project. That’s a relief. It makes sense that you wouldn’t know this new person then. Relieved, you decide to get lunch yourself, keeping an eye on the duo all the same while you eat. When the wait staff asks about the roses you have, you just tell them to mind their own business. As you go to pay the waiter, you look up only to see that the girl of your dreams and her friend have already left. 
+(link: &quot;They get lunch at a nicer restaurant, and begin talking about...&quot;)[ 
+transition.src = &#39;sfx/WomenLaughing.mp3&#39;;
+transition.loop = false;
+transition.volume = 1;
+transition.play();
 
-In that case, it’s time to [[head home.-&gt;Home]]</tw-passagedata><tw-passagedata pid="16" name="Movie" tags="" position="1000,1000" size="100,100">You go to the cinema, and buy a ticket for one (which only stings a little). You think about her for a bit while getting seated but once the movie begins you find yourself nice and distracted. Footloose isn’t exactly your cup of tea- too much singing- but it is entertaining and you make a note to thank your classmates for the recommendation if you get the chance. 
+Just a group project. That’s a relief. They&#39;re having a hilarious time from the sound of things. 
+
+&lt;img src=&quot;images/HideListen.png&quot; alt=&quot;Hide and Listen Image&quot;&gt;
+
+It makes sense that you wouldn’t know this new person then, they&#39;re just a peer. 
+
+Relieved, you decide to get lunch yourself, keeping an eye on the duo all the same while you eat. (if: $flowers is &gt; 0)[When the wait staff asks about the roses you have, you just tell them to mind their own business.] As you go to pay the waiter, you look up only to see that the girl of your dreams and her friend have already left. 
+
+In that case, it’s time to [[head home.-&gt;Home]]]
+
+&lt;script&gt;
+
+transition.src = &#39;sfx/CarRunning.wav&#39;;
+transition.loop = false;
+transition.volume = 0.2;
+transition.play();
+
+&lt;/script&gt;</tw-passagedata><tw-passagedata pid="16" name="Movie" tags="" position="1000,1000" size="100,100">You go to the cinema, and buy a ticket for one (which only stings a little). You think about her for a bit while getting seated but once the movie begins you find yourself nice and distracted. Footloose isn’t exactly your cup of tea- too much singing- but it is entertaining and you make a note to thank your classmates for the recommendation if you get the chance. 
+
+&lt;img src=&quot;images/Movies.png&quot; alt=&quot;Movies Image&quot;&gt;
 
 Once it’s over, you figure it may be time to [[head home.-&gt;Home]]</tw-passagedata><tw-passagedata pid="17" name="Groceries" tags="" position="1000,850" size="100,100">Oh boy, time to load the shopping cart with pizza rolls, pop tarts, and ramen. What? You aren’t expected to be eating healthy! You’re a college student after all. No one has the money for a full healthy meal, and it doesn’t help that you don’t know the first thing about cooking for yourself.
 
-Once you’ve taken your haul to checkout, you decide it may be time to [[head home.-&gt;Home]] You’ve got to get these pizza rolls to the freezer after all.</tw-passagedata><tw-passagedata pid="18" name="Visit" tags="" position="1550,600" size="100,100">The value is $stalker
+&lt;img src=&quot;images/Groceries.png&quot; alt=&quot;Groceries Image&quot;&gt;
 
-(if: $stalker is &lt; 4)[The sky is gray as you leave your apartment to head over to the dorms. However, it doesn’t look like it’ll be getting any worse than that.
+Once you’ve taken your haul to checkout, you decide it may be time to [[head home.-&gt;Home]] You’ve got to get these pizza rolls to the freezer after all.</tw-passagedata><tw-passagedata pid="18" name="Visit" tags="" position="1550,600" size="100,100">(if: $stalker is &lt; 4)[The sky is gray as you leave your apartment to head over to the dorms. However, it doesn’t look like it’ll be getting any worse than that.
 &lt;script&gt;
 audio.pause();
 audio.src = &#39;sfx/LightRain.mp3&#39;;
@@ -290,8 +452,16 @@ You’ve arrived at her dorm, your feet carrying you to the exact place you reme
 
 Time to [[knock on the door-&gt;Knock]].
 
-(if: $stalker is &lt; 4)[Or just maybe… you should leave. And [[leave behind the flowers you bought-&gt;Leave Flowers and Go]] as you go. You’re sure even without letting her know you’re there, she’ll know who they’re from.]
-(else-if: $points is &lt;= 4)[Or just maybe… you stick around. And [[leave behind the flowers you bought-&gt;Leave Flowers but Stay]] as you go. You’re sure even without letting her know you’re there, she’ll know who they’re from.]</tw-passagedata><tw-passagedata pid="19" name="Good End" tags="" position="1400,850" size="100,100">You reach out for the planner… and throw it into the trash next to the desk. She’s probably got a new one by now anyways. You go and grab the newspaper that was sitting beneath it, flipping it open and looking through the job section.
+(if: $flowers is &gt; 0)[
+(if: $stalker is &lt; 4)[Or just maybe… you should leave. And [[leave behind the flowers you bought-&gt;Leave Flowers and Go]] as you go. You’re sure even without letting her know you’re there, she’ll know who they’re from.](else-if: $points is &lt;= 4)[Or just maybe… you stick around. And [[leave behind the flowers you bought-&gt;Leave Flowers but Stay]] as you go. You’re sure even without letting her know you’re there, she’ll know who they’re from.]
+]
+
+&lt;script&gt;
+transition.src = &#39;sfx/CarPullingUp.mp3&#39;;
+transition.loop = false;
+transition.volume = 1;
+transition.play();
+&lt;/script&gt;</tw-passagedata><tw-passagedata pid="19" name="Good End" tags="" position="1400,850" size="100,100">You reach out for the planner… and throw it into the trash next to the desk. She’s probably got a new one by now anyways. You go and grab the newspaper that was sitting beneath it, flipping it open and looking through the job section.
 
 Something a few towns over would be nice. Something far enough away from this place he could clear his head. The semester was ending soon anyways, and he needed something to do. With you out of town, you’re sure she’ll be a bit less tense. Less in a hurry to get from crowded place to crowded place. More like she was before you dated her. 
 
@@ -307,13 +477,51 @@ moreStorm.src = &#39;sfx/PeacefulNatureAmbience.wav&#39;;
 moreStorm.play();
 moreStorm.volume = 0.8;
 moreStorm.loop = true;
+
+transition.src = &#39;sfx/Newspaper.wav&#39;;
+transition.loop = false;
+transition.volume = 1;
+transition.play();
+
 &lt;/script&gt;</tw-passagedata><tw-passagedata pid="20" name="Peek" tags="" position="1425,600" size="100,100">Just a quick peek. It’s too late for regrets anyways. Cracking open the planner, you almost slap yourself once you realize the obvious from her writing. Of course she’d be back at her dorms by now. She’s on a meal plan to eat dinners there, and she always goes back early on Saturdays to call her mother.
 
-Destination in mind, there’s only one thing left to do. [[Visit her.-&gt;Visit]] </tw-passagedata><tw-passagedata pid="21" name="Knock" tags="" position="1700,450" size="100,100">THUD THUD THUD. 
+Destination in mind, there’s only one thing left to do. [[Visit her.-&gt;Visit]] </tw-passagedata><tw-passagedata pid="21" name="Knock" tags="" position="1700,450" size="100,100">It&#39;s the door you&#39;ve entered so many times before.  Sometimes she went in first, and you watched her hair sway back and forth.  Other times it was you that would walk through first--you can feel her hand in yours, you can hear her giggling behind you.
 
-You knock on the door. And then knock again. And again. 
+&lt;i&gt;You&#39;ve spent enough time watching. (link: &quot;Time to get her back.&lt;/i&gt;&quot;)[Time to get her back.&lt;/i&gt;&lt;script&gt;
+transition.src = &#39;sfx/DoorKnock.wav&#39;;
+transition.loop = false;
+transition.volume = 0.1;
+transition.play();
+&lt;/script&gt;
+THUD THUD THUD. 
 
-She doesn’t respond, but that isn’t right. She should be home. You knock again and again, waiting for something to change. For her to open the door. Above you, the winds get louder and the sky grows stormy. Rain begins to pour around you, heavy and deafening. You resolve to hit the door even louder to be heard over it. 
+No answer.  You raise your hand to (link: &quot;knock on the door for a second time.&quot;)[knock on the door for a second time.&lt;script&gt;
+transition.src = &#39;sfx/DoorKnock.wav&#39;;
+transition.loop = false;
+transition.volume = 0.2;
+transition.play();
+&lt;/script&gt;
+
+(link: &quot;You knock again.&quot;)[You knock again.&lt;script&gt;
+transition.src = &#39;sfx/DoorKnock.wav&#39;;
+transition.loop = false;
+transition.volume = 0.3;
+transition.play();
+&lt;/script&gt;
+
+THUD THUD THUD. (link: &quot;And again.&quot;)[And again.&lt;script&gt;
+transition.src = &#39;sfx/DoorKnock.wav&#39;;
+transition.loop = false;
+transition.volume = 0.5;
+transition.play();
+&lt;/script&gt;
+
+She doesn’t respond, but that isn’t right. She should be home. You knock again and again, waiting for something to change. For her to open the door. Above you, the winds get louder and the sky grows stormy. Rain begins to pour around you, heavy and deafening. You resolve to (link: &quot;hit the door even louder to be heard over it.&quot;)[hit the door even louder to be heard over it.&lt;script&gt;
+transition.src = &#39;sfx/DoorKnock.wav&#39;;
+transition.loop = false;
+transition.volume = 1;
+transition.play();
+&lt;/script&gt;
 
 THUD THUD THUD. 
 
@@ -323,7 +531,7 @@ THUD THUD THUD.
 
 Heart sinking, you slowly raise your hands into the air to show compliance, looking longingly at her door one last time. How could she betray you like this? After everything? The thoughts cloud your mind as you’re seated in the back of the police car and they drive away into the heavy storm.
 
-[[The End]]
+[[The End]]]]]]]
 
 &lt;script&gt;
 moreStorm.pause();
@@ -333,6 +541,7 @@ moreStorm.volume = 0.3;
 moreStorm.loop = true;
 
 audio.volume = 0.7;
+
 &lt;/script&gt;</tw-passagedata><tw-passagedata pid="22" name="Leave Flowers and Go" tags="" position="1700,600" size="100,100">You place the flowers at her doorstep. They look good there. 
 
 You then glance up at the sky, finished admiring your gift to her. It’s time to leave, you decide, heading home, mission accomplished. And if there’s an article in the paper the next morning, warning the community of suspicious activity by the woman’s dorms, you just crumple up the paper and pretend not to see it. 
@@ -344,6 +553,11 @@ moreStorm.pause();
 moreStorm.src = &#39;sfx/DistantStorm.wav&#39;;
 moreStorm.play();
 moreStorm.loop = true;
+
+transition.src = &#39;sfx/CarStarting.wav&#39;;
+transition.loop = false;
+transition.volume = 1;
+transition.play();
 
 audio.volume = 0.7;
 &lt;/script&gt;</tw-passagedata><tw-passagedata pid="23" name="Leave Flowers but Stay" tags="" position="1700,750" size="100,100">You stare at the roses, and imagine yourself giving them to her. Her laughing, that infectious smile on her face as she receives the flower she holds so dear. You’re caught up in the moment, imagining what could have been. You wonder if she’s watching you from the door’s peephole, if she sees you outside her door, waiting. The storm whips around you, cloudy skies breaking out into a full downpour, but you don’t notice, too distracted. You don’t notice anything at all, until a steady voice calls out from behind you.
@@ -393,7 +607,14 @@ music.pause();
 
 You get your drink and find a seat further into the shop, at a blindspot to most of the other patrons. From there, you take the time to simply watch the girl of your dreams as she immersed herself in her book. It must be a good one, because she’s hooked, emotions clear on her face as she goes through it, ranging from content to scared to sad. 
 
-Throughout the whole thing, she still looks beautiful. After a while, she looks up and glances at the clock near the registrar of the coffee shop. Her eyes widen and she quickly dog ears the page she’s on before closing the book and quickly getting out of her seat. She seems to be in an urgent situation, and before you know it your feet are moving as you [[follow along after her-&gt;Follow]], hoping to help.</tw-passagedata></tw-storydata>
+Throughout the whole thing, she still looks beautiful. After a while, she looks up and glances at the clock near the registrar of the coffee shop. Her eyes widen and she quickly dog ears the page she’s on before closing the book and quickly getting out of her seat. She seems to be in an urgent situation, and before you know it your feet are moving as you [[follow along after her-&gt;Follow]], hoping to help.
+
+&lt;script&gt;
+transition.src = &#39;sfx/PageFlip.wav&#39;;
+transition.loop = false;
+transition.volume = 1;
+transition.play();
+&lt;/script&gt;</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">"use strict";var _slicedToArray=function(){return function(e,t){if(Array.isArray(e))return e;if(Symbol.iterator in Object(e))return function(e,t){var n=[],r=!0,i=!1,a=void 0;try{for(var o,s=e[Symbol.iterator]();!(r=(o=s.next()).done)&&(n.push(o.value),!t||n.length!==t);r=!0);}catch(e){i=!0,a=e}finally{try{!r&&s.return&&s.return()}finally{if(i)throw a}}return n}(e,t);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}!function(){
 /**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
